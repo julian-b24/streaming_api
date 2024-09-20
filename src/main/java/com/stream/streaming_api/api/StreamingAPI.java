@@ -1,5 +1,6 @@
 package com.stream.streaming_api.api;
 
+import com.stream.streaming_api.dto.ContentDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -8,15 +9,15 @@ import java.util.List;
 public interface StreamingAPI {
 
     @GetMapping("/content-random")
-    public Integer getRandomStreamingContent();
+    ContentDTO getRandomStreamingContent();
 
     @GetMapping("/content")
-    public List<Integer> getContents();
+    List<ContentDTO> getContents();
 
     @PatchMapping("/content/{contentId}/marked")
-    public Integer markedContentAsViewed(@PathVariable String contentId);
+    ContentDTO markContentAsViewed(@PathVariable String contentId);
 
     @PatchMapping("/content/{contentId}/rate")
-    public Integer rateContent(@RequestBody Integer contentRate);
+    ContentDTO rateContent(@PathVariable String contentId, @RequestBody Integer contentRate);
 
 }
