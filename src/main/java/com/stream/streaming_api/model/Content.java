@@ -17,7 +17,7 @@ public class Content {
 
     @Id
     @NonNull
-    private UUID id; //@Type("org.hibernate.type.PostgresUUIDType")
+    private UUID id;
 
     @Column(name = "name")
     private String name;

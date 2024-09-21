@@ -13,8 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 public class StreamingController implements StreamingAPI {
 
-    private ContentService contentService;
-    private ContentMapper contentMapper;
+    public final ContentService contentService;
+    public final ContentMapper contentMapper;
 
     @Override
     public ContentDTO getRandomStreamingContent() {
