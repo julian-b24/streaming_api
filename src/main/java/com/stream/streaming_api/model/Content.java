@@ -25,6 +25,7 @@ public class Content {
     @Column(name = "genre")
     private String genre;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "type")
     private ContentType type;
 
