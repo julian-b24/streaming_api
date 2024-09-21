@@ -16,7 +16,7 @@ public class ContentServiceImpl implements ContentService {
 
     @Override
     public Content getRandomStreamingContent() {
-        return null;
+        return contentRepository.getRandomContent();
     }
 
     @Override

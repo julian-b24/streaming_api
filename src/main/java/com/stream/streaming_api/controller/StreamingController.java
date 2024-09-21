@@ -18,7 +18,7 @@ public class StreamingController implements StreamingAPI {
 
     @Override
     public ContentDTO getRandomStreamingContent() {
-        return null;
+        return contentMapper.fromContentToDTO(contentService.getRandomStreamingContent());
     }
 
     @Override
