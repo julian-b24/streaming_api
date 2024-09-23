@@ -1,12 +1,12 @@
 INSERT INTO "content" (id, "name", genre, "type", num_views, rate)
 VALUES
-    ('550e8400-e29b-41d4-a716-446655440000', 'Inception', 'Sci-Fi', 'MOVIE', 1, 8.8),
-    ('550e8400-e29b-41d4-a716-446655440001', 'Breaking Bad', 'Drama', 'SERIE', 1, 9.5),
-    ('550e8400-e29b-41d4-a716-446655440002', 'Avatar: The Last Airbender', 'Animation', 'SERIE', 1, 9.2);
+    ('345a792a-08b7-4fc9-8cd0-9e7be0281e49', 'Inception', 'Sci-Fi', 'MOVIE', 1, 4.2),
+    ('762e74e2-2699-4ca2-9aff-1a188d933da3', 'Breaking Bad', 'Drama', 'SERIE', 1, 4.5),
+    ('5e3b8005-966b-4ee6-91d0-0f731cd96f10', 'Avatar: The Last Airbender', 'Animation', 'SERIE', 1, 3.1);
 
 
 INSERT INTO content_rate (id, content_id, rate)
 VALUES
-    ('550e8400-e29b-41d4-a716-446655440003', '550e8400-e29b-41d4-a716-446655440000', 8.8),
-    ('550e8400-e29b-41d4-a716-446655440004', '550e8400-e29b-41d4-a716-446655440001', 9.5),
-    ('550e8400-e29b-41d4-a716-446655440005', '550e8400-e29b-41d4-a716-446655440002', 9.2);
+    ('559f1e7c-39f3-47e9-abaf-83cefb334daa', '345a792a-08b7-4fc9-8cd0-9e7be0281e49', 4.2),
+    ('4f1efdf2-3872-4cf1-9b70-9636d35751ff', '762e74e2-2699-4ca2-9aff-1a188d933da3', 4.5),
+    ('0fb1404d-ecc8-40c3-aa77-43466b428069', '5e3b8005-966b-4ee6-91d0-0f731cd96f10', 3.1);

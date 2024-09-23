@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Type;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -33,7 +34,10 @@ public class Content {
     private int views;
 
     @Column(name = "rate")
-    private float rate;
+    private double rate;
+
+    @OneToMany(mappedBy = "content", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ContentRate> rates;
 
     @PrePersist
     public void generateId() { this.id = UUID.randomUUID();}

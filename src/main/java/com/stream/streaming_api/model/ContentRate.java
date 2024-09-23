@@ -17,11 +17,12 @@ public class ContentRate {
     @Id
     private UUID id;
 
-    @Column(name = "content_id")
-    private UUID contentId;
-
     @Column(name = "rate")
     private float rate;
+
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "content_id", nullable = false)
+    private Content content;
 
     @PrePersist
     public void generateId() { this.id = UUID.randomUUID();}

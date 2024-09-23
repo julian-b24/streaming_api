@@ -1,13 +1,21 @@
 package com.stream.streaming_api.controller;
 
 import com.stream.streaming_api.api.StreamingAPI;
+import com.stream.streaming_api.constants.StreamingErrorCode;
 import com.stream.streaming_api.dto.ContentDTO;
+import com.stream.streaming_api.dto.ContentRateDTO;
+import com.stream.streaming_api.error.exception.StreamingError;
+import com.stream.streaming_api.error.exception.StreamingException;
 import com.stream.streaming_api.mapper.ContentMapper;
+import com.stream.streaming_api.mapper.ContentRateMapper;
 import com.stream.streaming_api.service.ContentService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
@@ -15,6 +23,7 @@ public class StreamingController implements StreamingAPI {
 
     public final ContentService contentService;
     public final ContentMapper contentMapper;
+    public final ContentRateMapper contentRateMapper;
 
     @Override
     public ContentDTO getRandomStreamingContent() {
@@ -27,12 +36,17 @@ public class StreamingController implements StreamingAPI {
     }
 
     @Override
+    public ContentDTO getContent(String contentId) {
+        return contentMapper.fromContentToDTO(contentService.getStreamingContent(UUID.fromString(contentId)));
+    }
+
+    @Override
     public ContentDTO markContentAsViewed(String contentId) {
         return null;
     }
 
     @Override
-    public ContentDTO rateContent(String contentId, Integer contentRate) {
-        return null;
+    public ContentDTO rateContent(UUID contentId, @Valid ContentRateDTO contentRate) {
+        return contentMapper.fromContentToDTO(contentService.rateContent(contentId, contentRateMapper.fromDTOtoContentRate(contentRate)));
     }
 }
