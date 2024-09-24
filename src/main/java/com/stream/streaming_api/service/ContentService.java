@@ -16,6 +16,6 @@ public interface ContentService {
 
     Content markContentAsViewed(UUID contentId, UUID userId);
 
-    Content rateContent(UUID contentId, ContentRate contentRate);
+    Content rateContent(UUID contentId, ContentRate contentRate, UUID userId);
 
 }

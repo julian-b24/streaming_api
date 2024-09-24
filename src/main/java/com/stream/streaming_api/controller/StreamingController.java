@@ -42,7 +42,7 @@ public class StreamingController implements StreamingAPI {
     }
 
     @Override
-    public ContentDTO rateContent(UUID contentId, @Valid ContentRateDTO contentRate) {
-        return contentMapper.fromContentToDTO(contentService.rateContent(contentId, contentRateMapper.fromDTOtoContentRate(contentRate)));
+    public ContentDTO rateContent(String contentId, @Valid ContentRateDTO contentRate, String userId) {
+        return contentMapper.fromContentToDTO(contentService.rateContent(UUID.fromString(contentId), contentRateMapper.fromDTOtoContentRate(contentRate), UUID.fromString(userId)));
     }
 }

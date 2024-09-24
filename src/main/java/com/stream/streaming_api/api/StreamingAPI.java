@@ -23,7 +23,7 @@ public interface StreamingAPI {
     @PostMapping("/content/{contentId}/marked/{userId}")
     ContentDTO markContentAsViewed(@PathVariable String contentId, @PathVariable String userId);
 
-    @PostMapping("/content/{contentId}/rate")
-    ContentDTO rateContent(@PathVariable UUID contentId, @RequestBody ContentRateDTO contentRate);
+    @PostMapping("/content/{contentId}/rate/{userId}")
+    ContentDTO rateContent(@PathVariable String contentId, @RequestBody ContentRateDTO contentRate,  @PathVariable String userId);
 
 }

@@ -66,12 +66,22 @@ public class ContentServiceImpl implements ContentService {
     }
 
     @Override
-    public Content rateContent(UUID contentId, ContentRate contentRate) {
+    public Content rateContent(UUID contentId, ContentRate contentRate, UUID userId) {
         Content content = getContentById(contentId);
+        User user = userService.getUser(userId);
+        validateIsFirstUserRateToContent(contentId, userId);
         contentRate.setContent(content);
+        contentRate.setUser(user);
         contentRateRepository.save(contentRate);
         updateContentRate(content);
         return content;
+    }
+
+    private void validateIsFirstUserRateToContent(UUID contentId, UUID userId) {
+        Optional<ContentRate> rate = contentRateRepository.findByContentIdAndUserId(contentId, userId);
+        if (rate.isPresent()) {
+            throw new StreamingException(HttpStatus.BAD_REQUEST, new StreamingError(StreamingErrorCode.CODE_400_USERS_RATE, StreamingErrorCode.CODE_400_USERS_RATE.getMessage()));
+        }
     }
 
     public Content getContentById(UUID contentId) {
