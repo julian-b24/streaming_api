@@ -1,17 +1,13 @@
 package com.stream.streaming_api.controller;
 
 import com.stream.streaming_api.api.StreamingAPI;
-import com.stream.streaming_api.constants.StreamingErrorCode;
 import com.stream.streaming_api.dto.ContentDTO;
 import com.stream.streaming_api.dto.ContentRateDTO;
-import com.stream.streaming_api.error.exception.StreamingError;
-import com.stream.streaming_api.error.exception.StreamingException;
 import com.stream.streaming_api.mapper.ContentMapper;
 import com.stream.streaming_api.mapper.ContentRateMapper;
 import com.stream.streaming_api.service.ContentService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;

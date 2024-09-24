@@ -9,16 +9,13 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "content_rate")
+@Table(name = "user_content_view")
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContentRate {
+public class UserContentView {
 
     @Id
     private UUID id;
-
-    @Column(name = "rate")
-    private float rate;
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "content_id", nullable = false)
@@ -28,6 +25,4 @@ public class ContentRate {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @PrePersist
-    public void generateId() { this.id = UUID.randomUUID();}
 }
