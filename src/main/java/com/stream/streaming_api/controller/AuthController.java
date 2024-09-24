@@ -18,9 +18,5 @@ public class AuthController implements AuthAPI {
         return authService.loginUser(user);
     }
 
-    @Override
-    public JwtDTO refreshToken(JwtDTO token) {
-        return authService.refreshToken(token);
-    }
 
 }
