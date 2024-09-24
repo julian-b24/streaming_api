@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @RestController
 @AllArgsConstructor
@@ -27,9 +29,10 @@ public class StreamingController implements StreamingAPI {
     }
 
     @Override
-    public List<ContentDTO> getContents() {
-        return null;
+    public List<ContentDTO> getContents(Boolean sortName, Boolean sortGender, Boolean sortRate) {
+        return contentService.getContents(sortName, sortGender, sortRate).stream().map(contentMapper::fromContentToDTO).collect(Collectors.toList());
     }
+
 
     @Override
     public ContentDTO getContent(String contentId) {

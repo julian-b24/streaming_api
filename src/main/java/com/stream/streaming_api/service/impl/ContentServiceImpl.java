@@ -13,9 +13,11 @@ import com.stream.streaming_api.repository.UserContentViewRepository;
 import com.stream.streaming_api.service.ContentService;
 import com.stream.streaming_api.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -41,9 +43,27 @@ public class ContentServiceImpl implements ContentService {
     }
 
     @Override
-    public List<Content> getContents() {
-        return null;
+    public List<Content> getContents(Boolean sortName, Boolean sortGenre, Boolean sortRate) {
+        List<Content> contents = null;
+        String parameterToSort = "";
+
+        if (sortName != null) {
+            parameterToSort = "name";
+        } else if (sortGenre != null) {
+            parameterToSort = "genre";
+        } else if (sortRate != null) {
+            parameterToSort = "rate";
+        }
+
+        if (parameterToSort.equals("")) {
+            contents = (List<Content>) contentRepository.findAll();
+        } else {
+            contents = contentRepository.findAll(Sort.by(Sort.Direction.ASC, parameterToSort));
+        }
+
+        return contents;
     }
+
 
     @Override
     public Content markContentAsViewed(UUID contentId, UUID userId) {

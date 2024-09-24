@@ -14,6 +14,8 @@ public class ContentDTO {
 
     private UUID id;
 
+    private String name;
+
     private String genre;
 
     private ContentType type;

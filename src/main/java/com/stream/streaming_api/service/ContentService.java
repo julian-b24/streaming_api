@@ -12,7 +12,7 @@ public interface ContentService {
 
     Content getStreamingContent(UUID contentId);
 
-    List<Content> getContents();
+    List<Content> getContents(Boolean sortName, Boolean sortGender, Boolean sortRate);
 
     Content markContentAsViewed(UUID contentId, UUID userId);
 
