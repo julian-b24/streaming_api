@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -26,7 +27,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public JwtDTO loginUser(UserLoginDTO user) {
         User userFound = userRepository.findByNickname(user.getNickname());
-        if (userFound == null || userFound.getPassword() != user.getPassword()) {
+        if (userFound == null || !Objects.equals(userFound.getPassword(), user.getPassword())) {
             throw new StreamingException(HttpStatus.BAD_REQUEST, new StreamingError(StreamingErrorCode.CODE_400_LOGIN, StreamingErrorCode.CODE_400_LOGIN.getMessage()));
         }
 

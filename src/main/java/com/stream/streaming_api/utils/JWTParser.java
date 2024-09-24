@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class JWTParser {
 
-    private static final String SECRET_KEY = System.getProperty("spring.security.jwt.password");
+    private static final String SECRET_KEY = "hereisafakelongenoughsecretkeyfor256encryptionalgorithm";
 
     public static String createJWT(String id, String issuer, String subject, Map<String, String> claims, long ttlMillis) {
 
