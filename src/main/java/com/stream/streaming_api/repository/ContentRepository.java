@@ -17,4 +17,8 @@ public interface ContentRepository extends CrudRepository<Content, UUID> {
 
     List<Content> findAll(Sort sort);
 
+    @Query(value = "SELECT * FROM content WHERE name LIKE %?1% AND genre LIKE %?2% AND type LIKE %?3%", nativeQuery = true)
+    List<Content> findByNameGenreTypeLike(String name, String genre, String type);
+
+
 }

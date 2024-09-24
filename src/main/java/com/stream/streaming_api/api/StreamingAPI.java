@@ -17,6 +17,11 @@ public interface StreamingAPI {
     @GetMapping("/content/{contentId}")
     ContentDTO getContent(@PathVariable String contentId);
 
+    @GetMapping("/content/filter")
+    List<ContentDTO> getContentsFilter(@RequestParam(required = false, name = "name") String name,
+                                 @RequestParam(required = false, name = "gender") String gender,
+                                 @RequestParam(required = false, name = "type") String type);
+
     @GetMapping("/content")
     List<ContentDTO> getContents(@RequestParam(required = false, name = "sort_name") Boolean sortName,
                                  @RequestParam(required = false, name = "sort_gender") Boolean sortGender,

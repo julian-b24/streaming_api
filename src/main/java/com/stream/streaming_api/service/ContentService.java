@@ -18,4 +18,6 @@ public interface ContentService {
 
     Content rateContent(UUID contentId, ContentRate contentRate, UUID userId);
 
+    List<Content> getContentsFilter(String name, String gender, String type);
+
 }

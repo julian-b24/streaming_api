@@ -40,6 +40,11 @@ public class StreamingController implements StreamingAPI {
     }
 
     @Override
+    public List<ContentDTO> getContentsFilter(String name, String gender, String type) {
+        return contentService.getContentsFilter(name, gender, type).stream().map(contentMapper::fromContentToDTO).collect(Collectors.toList());
+    }
+
+    @Override
     public ContentDTO markContentAsViewed(String contentId, String userId) {
         return contentMapper.fromContentToDTO(contentService.markContentAsViewed(UUID.fromString(contentId), UUID.fromString(userId)));
     }

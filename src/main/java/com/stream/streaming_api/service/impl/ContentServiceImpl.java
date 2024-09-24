@@ -97,10 +97,23 @@ public class ContentServiceImpl implements ContentService {
         return content;
     }
 
+    @Override
+    public List<Content> getContentsFilter(String name, String gender, String type) {
+
+        name = (name != null) ? name: "";
+        gender = (gender != null) ? gender: "";
+        type = (type != null) ? type: "";
+
+        return contentRepository.findByNameGenreTypeLike(name, gender, type);
+    }
+
     private void validateIsFirstUserRateToContent(UUID contentId, UUID userId) {
         Optional<ContentRate> rate = contentRateRepository.findByContentIdAndUserId(contentId, userId);
         if (rate.isPresent()) {
-            throw new StreamingException(HttpStatus.BAD_REQUEST, new StreamingError(StreamingErrorCode.CODE_400_USERS_RATE, StreamingErrorCode.CODE_400_USERS_RATE.getMessage()));
+            throw new StreamingException(HttpStatus.BAD_REQUEST,
+                    new StreamingError(
+                            StreamingErrorCode.CODE_400_USERS_RATE,
+                            StreamingErrorCode.CODE_400_USERS_RATE.getMessage()));
         }
     }
 
@@ -108,7 +121,10 @@ public class ContentServiceImpl implements ContentService {
         System.out.println(contentId);
         Optional<Content> content =contentRepository.findById(contentId);
         if (content.isEmpty()) {
-            throw new StreamingException(HttpStatus.NOT_FOUND, new StreamingError(StreamingErrorCode.CODE_404, StreamingErrorCode.CODE_404.getMessage()));
+            throw new StreamingException(HttpStatus.NOT_FOUND,
+                    new StreamingError(
+                            StreamingErrorCode.CODE_404,
+                            StreamingErrorCode.CODE_404.getMessage()));
         }
         return content.get();
     }
