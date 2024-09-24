@@ -14,7 +14,7 @@ public interface ContentService {
 
     List<Content> getContents();
 
-    Content markContentAsViewed(String contentId);
+    Content markContentAsViewed(UUID contentId, UUID userId);
 
     Content rateContent(UUID contentId, ContentRate contentRate);
 

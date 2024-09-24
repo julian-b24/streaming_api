@@ -37,8 +37,8 @@ public class StreamingController implements StreamingAPI {
     }
 
     @Override
-    public ContentDTO markContentAsViewed(String contentId) {
-        return null;
+    public ContentDTO markContentAsViewed(String contentId, String userId) {
+        return contentMapper.fromContentToDTO(contentService.markContentAsViewed(UUID.fromString(contentId), UUID.fromString(userId)));
     }
 
     @Override

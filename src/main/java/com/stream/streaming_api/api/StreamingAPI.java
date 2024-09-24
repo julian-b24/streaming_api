@@ -20,8 +20,8 @@ public interface StreamingAPI {
     @GetMapping("/content/{contentId}")
     ContentDTO getContent(@PathVariable String contentId);
 
-    @PatchMapping("/content/{contentId}/marked")
-    ContentDTO markContentAsViewed(@PathVariable String contentId);
+    @PostMapping("/content/{contentId}/marked/{userId}")
+    ContentDTO markContentAsViewed(@PathVariable String contentId, @PathVariable String userId);
 
     @PostMapping("/content/{contentId}/rate")
     ContentDTO rateContent(@PathVariable UUID contentId, @RequestBody ContentRateDTO contentRate);
