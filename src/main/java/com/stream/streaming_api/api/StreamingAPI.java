@@ -12,25 +12,38 @@ import java.util.UUID;
 public interface StreamingAPI {
 
     @GetMapping("/content-random")
-    ContentDTO getRandomStreamingContent();
+    ContentDTO getRandomStreamingContent(@RequestHeader(name = "Authorization") String bearerToken);
 
     @GetMapping("/content/{contentId}")
-    ContentDTO getContent(@PathVariable String contentId);
+    ContentDTO getContent(
+            @RequestHeader(name = "Authorization") String bearerToken,
+            @PathVariable String contentId);
 
     @GetMapping("/content/filter")
-    List<ContentDTO> getContentsFilter(@RequestParam(required = false, name = "name") String name,
-                                 @RequestParam(required = false, name = "gender") String gender,
-                                 @RequestParam(required = false, name = "type") String type);
+    List<ContentDTO> getContentsFilter(
+            @RequestHeader(required = false, name = "Authorization") String bearerToken,
+            @RequestParam(required = false, name = "name") String name,
+            @RequestParam(required = false, name = "gender") String gender,
+            @RequestParam(required = false, name = "type") String type);
 
     @GetMapping("/content")
-    List<ContentDTO> getContents(@RequestParam(required = false, name = "sort_name") Boolean sortName,
-                                 @RequestParam(required = false, name = "sort_gender") Boolean sortGender,
-                                 @RequestParam(required = false, name = "sort_rate") Boolean sortRate);
+    List<ContentDTO> getContents(
+            @RequestHeader(name = "Authorization") String bearerToken,
+            @RequestParam(required = false, name = "sort_name") Boolean sortName,
+            @RequestParam(required = false, name = "sort_gender") Boolean sortGender,
+            @RequestParam(required = false, name = "sort_rate") Boolean sortRate);
 
     @PostMapping("/content/{contentId}/marked/{userId}")
-    ContentDTO markContentAsViewed(@PathVariable String contentId, @PathVariable String userId);
+    ContentDTO markContentAsViewed(
+            @RequestHeader(name = "Authorization") String bearerToken,
+            @PathVariable String contentId,
+            @PathVariable String userId);
 
     @PostMapping("/content/{contentId}/rate/{userId}")
-    ContentDTO rateContent(@PathVariable String contentId, @RequestBody ContentRateDTO contentRate,  @PathVariable String userId);
+    ContentDTO rateContent(
+            @RequestHeader(name = "Authorization") String bearerToken,
+            @PathVariable String contentId,
+            @RequestBody ContentRateDTO contentRate,
+            @PathVariable String userId);
 
 }
