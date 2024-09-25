@@ -1,0 +1,273 @@
+{
+	"info": {
+		"_postman_id": "442294e5-d9f1-4166-932a-f7c5edc3200c",
+		"name": "Streaming API",
+		"description": "Esta es una colección de peticiones HTTP realizadas para testear los diferentes endpoints de un sistema de CRUD para streaming.\n\nAquí encontrararás dos carpetas: Auth y Streaming Content.\n\nAuth -> Tiene un endpoint de login sencillo para obtener un token JWT para un usuario dado un nickname y una contraseña (Ver inserts o DB para tener estos datos)\n\nStreaming Content -> Presenta todos los endpoint necesarios y sus parámetros para la prueba técnica.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22749464"
+	},
+	"item": [
+		{
+			"name": "Streaming Content",
+			"item": [
+				{
+					"name": "Random Content",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/streaming/content-random",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"streaming",
+								"content-random"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Content Order By",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/streaming/content?sort_gender=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"streaming",
+								"content"
+							],
+							"query": [
+								{
+									"key": "sort_gender",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Content",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/streaming/content/filter?name=The La",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"streaming",
+								"content",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "The La"
+								},
+								{
+									"key": "gender",
+									"value": "mation",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "SER",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rate content",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rate\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/streaming/content/345a792a-08b7-4fc9-8cd0-9e7be0281e49/rate/5b32d54e-1112-4719-804b-cc8968beb22f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"streaming",
+								"content",
+								"345a792a-08b7-4fc9-8cd0-9e7be0281e49",
+								"rate",
+								"5b32d54e-1112-4719-804b-cc8968beb22f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Content by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/streaming/content/550e8400-e29b-41d4-a716-446655440000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"streaming",
+								"content",
+								"550e8400-e29b-41d4-a716-446655440000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Content",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/streaming/content/345a792a-08b7-4fc9-8cd0-9e7be0281e49/marked/5b32d54e-1112-4719-804b-cc8968beb22f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"streaming",
+								"content",
+								"345a792a-08b7-4fc9-8cd0-9e7be0281e49",
+								"marked",
+								"5b32d54e-1112-4719-804b-cc8968beb22f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nickname\": \"john_doe\",\r\n    \"password\": \"securePassword123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
